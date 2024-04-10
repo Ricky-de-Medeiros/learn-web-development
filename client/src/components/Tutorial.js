@@ -1,4 +1,3 @@
-// src/components/Tutorial.js
 import React, { useState } from 'react';
 
 const Tutorial = ({ steps }) => {
@@ -13,13 +12,12 @@ const Tutorial = ({ steps }) => {
         <h3>{steps[currentStep].title}</h3>
         <p>{steps[currentStep].content}</p>
       </div>
+      <div className="progress-indicator">
+        Step {currentStep + 1} of {steps.length}
+      </div>
       <div className="navigation">
-        {currentStep > 0 && (
-          <button onClick={prevStep}>Previous</button>
-        )}
-        {currentStep < steps.length - 1 && (
-          <button onClick={nextStep}>Next</button>
-        )}
+        <button onClick={prevStep} disabled={currentStep === 0}>Previous</button>
+        <button onClick={nextStep} disabled={currentStep === steps.length - 1}>Next</button>
       </div>
     </div>
   );
